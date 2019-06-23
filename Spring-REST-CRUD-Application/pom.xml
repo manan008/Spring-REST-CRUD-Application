@@ -24,12 +24,21 @@
       </plugin>
     </plugins>
   </build>
+  <!-- Shared version number properties -->
+	<properties>
+	    <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
+	</properties>
   <dependencies>
   	<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-core</artifactId>
-	    <version>5.1.5.RELEASE</version>
+	    <version>${org.springframework.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>${org.springframework.version}</version>
 	</dependency>
   </dependencies>
 </project>
