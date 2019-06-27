@@ -1,5 +1,8 @@
 package com.home.dao;
 
-public interface LoginDao {
+import com.home.model.User;
 
+public interface LoginDao 
+{
+	public Integer auth(User user);
 }
