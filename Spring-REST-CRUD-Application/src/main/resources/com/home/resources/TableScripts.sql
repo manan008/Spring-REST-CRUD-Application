@@ -1,9 +1,18 @@
+DROP TABLE UserCredentials;
 DROP TABLE BookDetails;
+
+CREATE TABLE UserCredentials
+(
+  username VARCHAR(40) PRIMARY KEY,
+  password VARCHAR(40)
+);
+
+INSERT INTO UserCredentials VALUES('root','root');
 
 CREATE TABLE BookDetails
 (
   bookId int PRIMARY KEY,
-  bookName VARCHAR(40),
+  bookName VARCHAR(40) UNIQUE,
   publisherName VARCHAR(20),
   publishedDate DATE,
   cost NUMBER(6,2)
@@ -19,3 +28,4 @@ INSERT INTO BookDetails VALUES(105,'You Don''t Know JS','Kyle Simpson',DATE '201
 COMMIT;
 
 SELECT * FROM BookDetails;
+SELECT * FROM UserCredentials;
