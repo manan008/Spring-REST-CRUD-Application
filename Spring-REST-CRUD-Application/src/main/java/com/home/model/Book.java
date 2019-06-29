@@ -11,7 +11,7 @@ public class Book
 	private Float cost;
 	
 	public Book() {
-		System.out.println("Object created");
+		System.out.println("Book class Constructor called");
 	}
 	public Integer getBookId() {
 		return bookId;
