@@ -7,7 +7,7 @@
 		</File>
 	</Appenders>
 	<Loggers>
-		<Logger name="packagename" level="INFO" additivity="false">
+		<Logger name="com.home" level="INFO" additivity="false">
 			<AppenderRef ref="LogFile" />
 		</Logger>
 	</Loggers>
