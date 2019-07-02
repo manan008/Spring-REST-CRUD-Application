@@ -8,7 +8,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import com.home.model.Book;
 
 @Configuration
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass = true)
+
 @ComponentScan(basePackages = "com.home.service com.home.dao com.home.utiltiy")
 public class SpringConfig 
 {
