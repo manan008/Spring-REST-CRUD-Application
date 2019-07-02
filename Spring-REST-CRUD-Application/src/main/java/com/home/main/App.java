@@ -6,13 +6,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.home.configuration.SpringConfig;
 import com.home.model.Book;
-import com.home.resources.AppConfig;
-import com.home.resources.LogConfig;
+import com.home.utility.AppConfig;
+import com.home.utility.LogConfig;
+
 
 public class App 
 {
 	final static Logger LOGGER = LogConfig.getLogger(App.class);
 	
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		
 		System.out.println("Program Execution Started");

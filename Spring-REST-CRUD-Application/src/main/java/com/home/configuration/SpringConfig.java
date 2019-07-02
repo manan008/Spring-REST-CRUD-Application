@@ -3,11 +3,13 @@ package com.home.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import com.home.model.Book;
 
 @Configuration
-@ComponentScan(basePackages = "com.home.service com.home.dao")
+@EnableAspectJAutoProxy
+@ComponentScan(basePackages = "com.home.service com.home.dao com.home.utiltiy")
 public class SpringConfig 
 {
 	@Bean

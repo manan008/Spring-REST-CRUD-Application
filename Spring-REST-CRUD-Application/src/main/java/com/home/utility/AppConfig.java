@@ -1,4 +1,4 @@
-package com.home.resources;
+package com.home.utility;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,8 +11,8 @@ public class AppConfig {
 	
 	static {
 		try {
-			inputStream1 = AppConfig.class.getResourceAsStream("configuration.properties");
-			inputStream2 = AppConfig.class.getResourceAsStream("database.properties");
+			inputStream1 = AppConfig.class.getResourceAsStream("/com/home/resources/configuration.properties");
+			inputStream2 = AppConfig.class.getResourceAsStream("/com/home/resources/database.properties");
 		}
 		catch (Exception e) {
 			LogConfig.getLogger(AppConfig.class).error(e.getMessage(), e);
