@@ -1,15 +1,15 @@
-DROP TABLE usercredentials;
-DROP TABLE author_book;
-DROP TABLE author;
-DROP TABLE book;
+DROP TABLE USERCREDENTIALS;
+DROP TABLE AUTHOR_BOOK;
+DROP TABLE AUTHOR;
+DROP TABLE BOOK;
 
-CREATE TABLE usercredentials
+CREATE TABLE USERCREDENTIALS
 (
   username VARCHAR(40) PRIMARY KEY,
   password VARCHAR(40)
 );
 
-CREATE TABLE author
+CREATE TABLE AUTHOR
 (
   authorid INTEGER PRIMARY KEY,
   authorname VARCHAR(40),
@@ -17,7 +17,7 @@ CREATE TABLE author
   qualification VARCHAR(20)
 );
 
-CREATE TABLE book
+CREATE TABLE BOOK
 (
   bookid VARCHAR(40) PRIMARY KEY,
   bookname VARCHAR(40),
@@ -26,35 +26,35 @@ CREATE TABLE book
   cost NUMBER(6,2)
 );
 
-CREATE TABLE author_book
+CREATE TABLE AUTHOR_BOOK
 (
   author_id INTEGER NOT NULL,
   book_id VARCHAR(40) NOT NULL,
-  FOREIGN KEY (author_id) REFERENCES author(authorid),
-  FOREIGN KEY (book_id) REFERENCES book(bookid)
+  FOREIGN KEY (author_id) REFERENCES AUTHOR(authorid),
+  FOREIGN KEY (book_id) REFERENCES BOOK(bookid)
 );
 
 
-INSERT INTO usercredentials VALUES('root','root');
+INSERT INTO USERCREDENTIALS VALUES('root','root');
 
-INSERT INTO author VALUES(1001,'Marijn Haverbeke','marjin@gmail.com','MBA');
-INSERT INTO author VALUES(1002,'Addy Osmani','addy@gmail.com','B.Tech');
-INSERT INTO author VALUES(1003,'Eric Elliott','eric@gmail.com','Ph.D');
-INSERT INTO author VALUES(1004,'Kyle Simpson','kyle@gmail.com','BBA');
+INSERT INTO AUTHOR VALUES(1001,'Marijn Haverbeke','marjin@gmail.com','MBA');
+INSERT INTO AUTHOR VALUES(1002,'Addy Osmani','addy@gmail.com','B.Tech');
+INSERT INTO AUTHOR VALUES(1003,'Eric Elliott','eric@gmail.com','Ph.D');
+INSERT INTO AUTHOR VALUES(1004,'Kyle Simpson','kyle@gmail.com','BBA');
 
-INSERT INTO book VALUES('B1001','A Modern Introduction to Programming','English',DATE '2018-11-02','472.50');
-INSERT INTO book VALUES('B1002','Learning JavaScript Design Patterns','English',DATE '2018-07-12','580.30');
-INSERT INTO book VALUES('B1003','Speaking JavaScript','English',DATE '2014-02-01','460.80');
-INSERT INTO book VALUES('B1004','Understanding ECMAScript 6','English',DATE '2016-09-03','1060.20');
-INSERT INTO book VALUES('B1005','You Don''t Know JS','English',DATE '2015-12-27','272.80');
+INSERT INTO BOOK VALUES('B1001','A Modern Introduction to Programming','English',DATE '2018-11-02','472.50');
+INSERT INTO BOOK VALUES('B1002','Learning JavaScript Design Patterns','English',DATE '2018-07-12','580.30');
+INSERT INTO BOOK VALUES('B1003','Speaking JavaScript','English',DATE '2014-02-01','460.80');
+INSERT INTO BOOK VALUES('B1004','Understanding ECMAScript 6','English',DATE '2016-09-03','1060.20');
+INSERT INTO BOOK VALUES('B1005','You Don''t Know JS','English',DATE '2015-12-27','272.80');
 
-INSERT INTO author_book VALUES(1001,'B1001');
-INSERT INTO author_book VALUES(1002,'B1002');
-INSERT INTO author_book VALUES(1003,'B1003');
-INSERT INTO author_book VALUES(1004,'B1004');
-INSERT INTO author_book VALUES(1004,'B1005');
+INSERT INTO AUTHOR_BOOK VALUES(1001,'B1001');
+INSERT INTO AUTHOR_BOOK VALUES(1002,'B1002');
+INSERT INTO AUTHOR_BOOK VALUES(1003,'B1003');
+INSERT INTO AUTHOR_BOOK VALUES(1004,'B1004');
+INSERT INTO AUTHOR_BOOK VALUES(1004,'B1005');
 
-SELECT * FROM usercredentials;
-SELECT * FROM author;
-SELECT * FROM book;
-SELECT * FROM author_book;
+SELECT * FROM USERCREDENTIALS;
+SELECT * FROM AUTHOR;
+SELECT * FROM BOOK;
+SELECT * FROM AUTHOR_BOOK;

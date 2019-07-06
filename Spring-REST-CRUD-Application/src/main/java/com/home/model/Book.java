@@ -4,43 +4,54 @@ import java.time.LocalDate;
 
 public class Book 
 {
-	private Integer bookId ;
+	private String bookId ;
 	private String bookName ;
-	private String publisherName ;
+	private String language ;
 	private LocalDate publishedDate ;
 	private Float cost;
 	
 	public Book() {
-		System.out.println("Book class Constructor called");
+		//System.out.println("Book class Constructor called");
 	}
-	public Integer getBookId() {
+
+	public String getBookId() {
 		return bookId;
 	}
-	public void setBookId(Integer bookId) {
+
+	public void setBookId(String bookId) {
 		this.bookId = bookId;
 	}
+
 	public String getBookName() {
 		return bookName;
 	}
+
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	public String getPublisherName() {
-		return publisherName;
+
+	public String getLanguage() {
+		return language;
 	}
-	public void setPublisherName(String publisherName) {
-		this.publisherName = publisherName;
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
+
 	public LocalDate getPublishedDate() {
 		return publishedDate;
 	}
+
 	public void setPublishedDate(LocalDate publishedDate) {
 		this.publishedDate = publishedDate;
 	}
+
 	public Float getCost() {
 		return cost;
 	}
+
 	public void setCost(Float cost) {
 		this.cost = cost;
 	}
+
 }
