@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class LogginAspect 
+public class LoggingAspect 
 {
 	@AfterThrowing(pointcut="execution(* com.home.service.*Impl*.*(..))")
 	public void logExceptionFromService(Exception exception) throws Exception

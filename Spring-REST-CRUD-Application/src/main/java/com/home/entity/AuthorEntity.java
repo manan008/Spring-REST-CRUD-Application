@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.home.model.Book;
 
 
 @Entity
@@ -36,7 +35,7 @@ public class AuthorEntity {
 	@JoinTable(name="AUTHOR_BOOK",
 	joinColumns = @JoinColumn(name="author_id",referencedColumnName = "authorid"),
 	inverseJoinColumns = @JoinColumn(name="book_id",referencedColumnName = "bookid"))
-	private List<Book> bookList ;
+	private List<BookEntity> bookList ;
 	
 	public Integer getAuthorId() {
 		return authorId;
@@ -62,11 +61,12 @@ public class AuthorEntity {
 	public void setQualification(String qualification) {
 		this.qualification = qualification;
 	}
-	public List<Book> getBookList() {
+	public List<BookEntity> getBookList() {
 		return bookList;
 	}
-	public void setBookList(List<Book> bookList) {
+	public void setBookList(List<BookEntity> bookList) {
 		this.bookList = bookList;
 	}
+	
 	
 }
