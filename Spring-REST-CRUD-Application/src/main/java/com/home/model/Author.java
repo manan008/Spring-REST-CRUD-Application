@@ -1,6 +1,6 @@
 package com.home.model;
 
-import java.time.LocalDate;
+import java.util.List;
 
 public class Author {
 
@@ -8,6 +8,7 @@ public class Author {
 	private String authorName ;
 	private String emailId ;
 	private String qualification ;
+	private List<Book> bookList ;
 	
 	public Integer getAuthorId() {
 		return authorId;
