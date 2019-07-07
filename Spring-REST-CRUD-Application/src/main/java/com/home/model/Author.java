@@ -34,5 +34,11 @@ public class Author {
 	public void setQualification(String qualification) {
 		this.qualification = qualification;
 	}
+	public List<Book> getBookList() {
+		return bookList;
+	}
+	public void setBookList(List<Book> bookList) {
+		this.bookList = bookList;
+	}
 	
 }
