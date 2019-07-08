@@ -9,7 +9,7 @@ public class BookValidator {
 			throw new Exception("BookValidator.INVALID_BOOKID");
 			
 	}
-	public static Boolean validateBookId(String bookId)
+	private static Boolean validateBookId(String bookId)
 	{
 		String bookIdRegex="B1[0-9]{3,}";
 		if(bookId.matches(bookIdRegex))

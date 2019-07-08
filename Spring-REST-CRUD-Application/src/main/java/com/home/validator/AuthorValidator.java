@@ -9,7 +9,7 @@ public class AuthorValidator {
 		if(!validateEmailId(author.getEmailId()))
 			throw new Exception("AuthorValidator.INVALID_EMAILID");		
 	}
-	public static Boolean validateEmailId(String emailId)
+	private static Boolean validateEmailId(String emailId)
 	{
 		String emailIdRegex="[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z]+";
 		if(emailId.matches(emailIdRegex))
