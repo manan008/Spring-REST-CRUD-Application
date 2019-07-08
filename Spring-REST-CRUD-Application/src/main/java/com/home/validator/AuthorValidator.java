@@ -4,12 +4,12 @@ import com.home.model.Author;
 
 public class AuthorValidator {
 	
-	public void validate(Author author) throws Exception
+	public static void validate(Author author) throws Exception
 	{
 		if(!validateEmailId(author.getEmailId()))
 			throw new Exception("AuthorValidator.INVALID_EMAILID");		
 	}
-	private Boolean validateEmailId(String emailId)
+	public static Boolean validateEmailId(String emailId)
 	{
 		String emailIdRegex="[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z]+";
 		if(emailId.matches(emailIdRegex))
