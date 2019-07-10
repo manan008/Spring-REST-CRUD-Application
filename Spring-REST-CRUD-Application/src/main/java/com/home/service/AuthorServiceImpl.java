@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.home.dao.AuthorDAO;
 import com.home.model.Author;
 import com.home.model.Book;
+import com.home.validator.AuthorValidator;
 import com.home.validator.BookValidator;
 
 @Service(value = "authorService")
@@ -20,6 +21,7 @@ public class AuthorServiceImpl implements AuthorService {
 		/*Uncomment after prefixed autogen primary key generator done
 		 * for(Book book : author.getBookList()) { BookValidator.validate(book); }
 		 */
+		AuthorValidator.validate(author.getEmailId());
 		Boolean isEmailAlreadyAvailable = authorDAO.checkEmailAvailability(author.getEmailId());
 		if(isEmailAlreadyAvailable)
 		{
@@ -33,6 +35,8 @@ public class AuthorServiceImpl implements AuthorService {
 	@Override
 	public Author getAuthorDetails(String emailId) throws Exception {
 		// TODO Auto-generated method stub
+		
+		AuthorValidator.validate(emailId);
 		Author author = authorDAO.getAuthorDetails(emailId);
 		if(author==null)
 		{
@@ -47,6 +51,7 @@ public class AuthorServiceImpl implements AuthorService {
 		/*Uncomment after prefixed autogen primary key generator done
 		 * for(Book book : author.getBookList()) { BookValidator.validate(book); }
 		 */
+		AuthorValidator.validate(author.getEmailId());
 		Boolean isEmailAlreadyAvailable = authorDAO.checkEmailAvailability(author.getEmailId());
 		if(isEmailAlreadyAvailable)
 		{
