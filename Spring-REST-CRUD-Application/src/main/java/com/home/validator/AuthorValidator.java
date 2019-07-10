@@ -1,12 +1,11 @@
 package com.home.validator;
 
-import com.home.model.Author;
 
 public class AuthorValidator {
 	
-	public static void validate(Author author) throws Exception
+	public static void validate(String emailId) throws Exception
 	{
-		if(!validateEmailId(author.getEmailId()))
+		if(!validateEmailId(emailId))
 			throw new Exception("AuthorValidator.INVALID_EMAILID");		
 	}
 	private static Boolean validateEmailId(String emailId)
