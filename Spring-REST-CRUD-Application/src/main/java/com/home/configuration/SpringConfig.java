@@ -23,8 +23,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableTransactionManagement
 @PropertySources({
-	@PropertySource("classpath:/com/demo/resources/database.properties"),
-	@PropertySource("classpath:/com/demo/resources/configuration.properties")
+	@PropertySource("classpath:/com/home/resources/database.properties"),
+	@PropertySource("classpath:/com/home/resources/configuration.properties")
 })
 @ComponentScan(basePackages = "com.home.service com.home.dao com.home.utiltiy")
 public class SpringConfig 
