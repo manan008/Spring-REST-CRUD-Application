@@ -5,18 +5,28 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import com.home.utility.StringPrefixedSequenceIdGenerator;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;	
 
 @Entity
 @Table(name="BOOK")
-@GenericGenerator(name="idGen",strategy = "increment")
 public class BookEntity {
 	@Id
 	@Column(name="bookid")
-	@GeneratedValue(generator = "idGen")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
+	@GenericGenerator(
+	        name = "book_seq", 
+	        strategy = "com.home.utility.StringPrefixedSequenceIdGenerator",
+	        parameters = {
+	        		@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
+	                @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "B_"),
+	                @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%04d"),
+	        		@Parameter(name="sequence_name", value="HIBERNATE_SEQUENCE")
+	        })
 	private String bookId ;
 	@Column(name="bookname")
 	private String bookName ;

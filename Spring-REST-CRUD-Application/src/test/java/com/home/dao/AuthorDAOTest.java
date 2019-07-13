@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -95,13 +96,13 @@ public class AuthorDAOTest {
 		List<Book> bookList = new ArrayList<Book>();
 		
 		Book book1 = new Book ();
-		book1.setBookId("6004");
+		book1.setBookId("B_6004");
 		book1.setBookName("Understanding ECMAScript 6");
 		book1.setCost(1060.20f);
 		book1.setLanguage("English");
 		book1.setPublishedDate(LocalDate.parse( "2017-02-05" ));
 		Book book2 = new Book ();
-		book2.setBookId("6005");
+		book2.setBookId("B_6005");
 		book2.setBookName("You Don''t Know JS");
 		book2.setCost(272.80f);
 		book2.setLanguage("English");
