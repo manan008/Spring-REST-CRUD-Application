@@ -66,6 +66,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		}
 		authorEntity.setBookList(bookEntityList);
 		Integer authorId = (Integer)session.save(authorEntity);
+		System.out.println(authorId);
 		return authorId;
 	}
 
