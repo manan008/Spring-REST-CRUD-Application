@@ -60,7 +60,7 @@ public class AuthorServiceTest {
 	}
 	
 	@Test
-	public void addInvalidEmailId() throws Exception {
+	public void addAuthorInvalidEmailId() throws Exception {
 		Author author = new Author();
 		author.setAuthorName("James Gosling");
 		author.setEmailId("james@gmail.");
@@ -147,6 +147,107 @@ public class AuthorServiceTest {
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("AuthorService.AUTHOR_NOT_FOUND");
 		authorService.getAuthorDetails("james@gmail.com");
+	}
+	
+	@Test
+	public void updateAuthorDetailsSuccess() throws Exception {
+		Author author = new Author();
+		author.setAuthorId(1010);
+		author.setAuthorName("James Gosling");
+		author.setEmailId("james@gmail.com");
+		author.setQualification("MBA");
+		
+		List<Book> bookList = new ArrayList<Book>();
+		
+		Book book1 = new Book ();
+		book1.setBookId("B_6006");
+		book1.setBookName("book1");
+		book1.setCost(24.60f);
+		book1.setLanguage("English");
+		book1.setPublishedDate(LocalDate.parse( "2017-02-05" ));
+		Book book2 = new Book ();
+		book2.setBookId("B_6007");
+		book2.setBookName("book2");
+		book2.setCost(64.60f);
+		book2.setLanguage("English");
+		book2.setPublishedDate(LocalDate.parse( "2018-03-17" ));
+		
+		bookList.add(book1);
+		bookList.add(book2);
+		
+		author.setBookList(bookList);
+
+		when(authorDAO.updateAuthorDetails(author)).thenReturn(1010);
+		Assert.assertTrue(authorService.updateAuthorDetails(author)==1010);
+	}
+	
+	@Test
+	public void updateAuthorDetailsInvalidBookId() throws Exception {
+		Author author = new Author();
+		author.setAuthorId(1010);
+		author.setAuthorName("James Gosling");
+		author.setEmailId("james@gmail.com");
+		author.setQualification("MBA");
+		
+		List<Book> bookList = new ArrayList<Book>();
+		
+		Book book1 = new Book ();
+		book1.setBookId("B6006");
+		book1.setBookName("book1");
+		book1.setCost(24.60f);
+		book1.setLanguage("English");
+		book1.setPublishedDate(LocalDate.parse( "2017-02-05" ));
+		Book book2 = new Book ();
+		book2.setBookId("B_6007");
+		book2.setBookName("book2");
+		book2.setCost(64.60f);
+		book2.setLanguage("English");
+		book2.setPublishedDate(LocalDate.parse( "2018-03-17" ));
+		
+		bookList.add(book1);
+		bookList.add(book2);
+		
+		author.setBookList(bookList);
+
+		expectedException.expect(Exception.class);
+		expectedException.expectMessage("BookValidator.INVALID_BOOKID");
+		
+		when(authorDAO.updateAuthorDetails(author)).thenReturn(1010);
+		Assert.assertTrue(authorService.updateAuthorDetails(author)==1010);
+	}
+	
+	@Test
+	public void updateAuthorDetailsInvalidEmailId() throws Exception {
+		Author author = new Author();
+		author.setAuthorId(1010);
+		author.setAuthorName("James Gosling");
+		author.setEmailId("james@gmail.com");
+		author.setQualification("MBA");
+		
+		List<Book> bookList = new ArrayList<Book>();
+		
+		Book book1 = new Book ();
+		book1.setBookId("B_6006");
+		book1.setBookName("book1");
+		book1.setCost(24.60f);
+		book1.setLanguage("English");
+		book1.setPublishedDate(LocalDate.parse( "2017-02-05" ));
+		Book book2 = new Book ();
+		book2.setBookId("B_6007");
+		book2.setBookName("book2");
+		book2.setCost(64.60f);
+		book2.setLanguage("English");
+		book2.setPublishedDate(LocalDate.parse( "2018-03-17" ));
+		
+		bookList.add(book1);
+		bookList.add(book2);
+		
+		author.setBookList(bookList);
+		expectedException.expect(Exception.class);
+		expectedException.expectMessage("AuthorService.EXISITING_EMAIL_ID");
+		
+		when(authorDAO.checkEmailAvailability(author.getEmailId())).thenReturn(true);
+		Assert.assertTrue(authorService.updateAuthorDetails(author)==1010);
 	}
 	
 	@Test
