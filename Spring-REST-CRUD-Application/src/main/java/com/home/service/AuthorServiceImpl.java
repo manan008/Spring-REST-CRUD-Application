@@ -18,9 +18,10 @@ public class AuthorServiceImpl implements AuthorService {
 	@Override
 	public Integer addAuthor(Author author) throws Exception {
 		// TODO Auto-generated method stub
-		/*Uncomment after prefixed autogen primary key generator done
-		 * for(Book book : author.getBookList()) { BookValidator.validate(book); }
-		 */
+		for(Book book : author.getBookList()) 
+		{ 
+			BookValidator.validate(book); 
+		}
 		AuthorValidator.validate(author.getEmailId());
 		Boolean isEmailAlreadyAvailable = authorDAO.checkEmailAvailability(author.getEmailId());
 		if(isEmailAlreadyAvailable)
@@ -48,9 +49,10 @@ public class AuthorServiceImpl implements AuthorService {
 	@Override
 	public Integer updateAuthorDetails(Author author) throws Exception {
 		// TODO Auto-generated method stub
-		/*Uncomment after prefixed autogen primary key generator done
-		 * for(Book book : author.getBookList()) { BookValidator.validate(book); }
-		 */
+		for(Book book : author.getBookList()) 
+		{ 
+			BookValidator.validate(book); 
+		}
 		AuthorValidator.validate(author.getEmailId());
 		Boolean isEmailAlreadyAvailable = authorDAO.checkEmailAvailability(author.getEmailId());
 		if(isEmailAlreadyAvailable)
