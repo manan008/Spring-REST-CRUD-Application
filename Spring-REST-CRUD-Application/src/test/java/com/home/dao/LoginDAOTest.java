@@ -1,15 +1,21 @@
 package com.home.dao;
 
 
+import javax.transaction.Transactional;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.home.configuration.SpringConfig;
 import com.home.model.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {SpringConfig.class})
+@Transactional
 public class LoginDAOTest {
 	
 	@Autowired

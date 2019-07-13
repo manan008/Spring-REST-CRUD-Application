@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 	@PropertySource("classpath:/com/home/resources/database.properties"),
 	@PropertySource("classpath:/com/home/resources/configuration.properties")
 })
-@ComponentScan(basePackages = "com.home.service com.home.dao com.home.utiltiy")
+@ComponentScan(basePackages = "com.home.api com.home.service com.home.dao com.home.utiltiy")
 public class SpringConfig 
 {
 	/*
@@ -52,7 +52,7 @@ public class SpringConfig
 	{
 		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
 		sessionFactoryBean.setDataSource(dataSource);
-		sessionFactoryBean.setPackagesToScan("com.demo.entity");
+		sessionFactoryBean.setPackagesToScan("com.home.entity");
 		
 		Properties hibernateProperties = new Properties();
 		hibernateProperties.setProperty("hibernate.dialect", environment.getProperty("Hibernate.DIALECT"));

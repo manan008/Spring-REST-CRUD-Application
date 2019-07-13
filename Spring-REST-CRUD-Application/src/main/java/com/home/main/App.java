@@ -23,8 +23,10 @@ public class App
 		System.out.println("Application Context Created and Loaded");
 		LOGGER.info("Context creation done");
 		System.out.println("Created application context");
-		Book book = applicationContext.getBean(Book.class);
-		System.out.println("Got Bean of type Book and bean object is - "+book);
+		/*
+		 * Book book = applicationContext.getBean(Book.class);
+		 * System.out.println("Got Bean of type Book and bean object is - "+book);
+		 */
 		LOGGER.info("Bean retrieval done");
 		System.out.println("***************************************************");
 		System.out.println("Now it`s time to access values from properties file");
