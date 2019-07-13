@@ -11,7 +11,7 @@ public class BookValidator {
 	}
 	private static Boolean validateBookId(String bookId)
 	{
-		String bookIdRegex="B1[0-9]{3,}";
+		String bookIdRegex="B_6[0-9]{3,}";
 		if(bookId.matches(bookIdRegex))
 		{
 			return true;
