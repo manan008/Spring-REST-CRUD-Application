@@ -32,14 +32,16 @@ public class AuthorDAOImpl implements AuthorDAO {
 		CriteriaQuery<AuthorEntity> criteriaQuery = criteriaBuilder.createQuery(AuthorEntity.class);
 		Root<AuthorEntity> root = criteriaQuery.from(AuthorEntity.class);
 		criteriaQuery.select(root);
-		criteriaQuery.where(criteriaBuilder.equal(root.get("emailid"), emailId));
+		criteriaQuery.where(criteriaBuilder.equal(root.get("emailId"), emailId));
 		Query query = session.createQuery(criteriaQuery);
 		List<AuthorEntity> authorEntityList = query.getResultList();
 		if(!authorEntityList.isEmpty())
 		{
+			//email already exist
 			return true;
 		}
 		else {
+			//email does not exist
 			return false;
 		}
 	}
@@ -75,7 +77,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		CriteriaQuery<AuthorEntity> criteriaQuery = criteriaBuilder.createQuery(AuthorEntity.class);
 		Root<AuthorEntity> root = criteriaQuery.from(AuthorEntity.class);
 		criteriaQuery.select(root);
-		criteriaQuery.where(criteriaBuilder.equal(root.get("emailid"), emailId));
+		criteriaQuery.where(criteriaBuilder.equal(root.get("emailId"), emailId));
 		Query query = session.createQuery(criteriaQuery);
 		List<AuthorEntity> authorEntityList = query.getResultList();
 		if(!authorEntityList.isEmpty())
@@ -140,7 +142,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		 * CriteriaQuery<AuthorEntity> criteriaQuery =
 		 * criteriaBuilder.createQuery(AuthorEntity.class); Root<AuthorEntity> root =
 		 * criteriaQuery.from(AuthorEntity.class); criteriaQuery.select(root);
-		 * criteriaQuery.where(criteriaBuilder.equal(root.get("emailid"), emailId));
+		 * criteriaQuery.where(criteriaBuilder.equal(root.get("emailId"), emailId));
 		 * Query query = session.createQuery(criteriaQuery); List<AuthorEntity>
 		 * authorEntityList = query.getResultList(); if(!authorEntityList.isEmpty()) {
 		 * for(AuthorEntity authorEntity : authorEntityList) {
