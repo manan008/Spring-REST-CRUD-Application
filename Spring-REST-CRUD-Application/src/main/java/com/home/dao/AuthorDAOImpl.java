@@ -66,7 +66,8 @@ public class AuthorDAOImpl implements AuthorDAO {
 		}
 		authorEntity.setBookList(bookEntityList);
 		Integer authorId = (Integer)session.save(authorEntity);
-		System.out.println(authorId);
+		//in case of addition failure above statement will throw exception
+		//If the exception is not thrown, then it means the operation is successful.
 		return authorId;
 	}
 
@@ -130,6 +131,8 @@ public class AuthorDAOImpl implements AuthorDAO {
 			}
 		}
 		session.persist(authorEntity);
+		//in case of updating failure above statement will throw exception
+		//If the exception is not thrown, then it means the operation is successful.
 		Integer authorId = authorEntity.getAuthorId();
 		return authorId;
 	}
@@ -138,19 +141,10 @@ public class AuthorDAOImpl implements AuthorDAO {
 	public Integer deleteAuthor(Integer authorId) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		/*
-		 * CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-		 * CriteriaQuery<AuthorEntity> criteriaQuery =
-		 * criteriaBuilder.createQuery(AuthorEntity.class); Root<AuthorEntity> root =
-		 * criteriaQuery.from(AuthorEntity.class); criteriaQuery.select(root);
-		 * criteriaQuery.where(criteriaBuilder.equal(root.get("emailId"), emailId));
-		 * Query query = session.createQuery(criteriaQuery); List<AuthorEntity>
-		 * authorEntityList = query.getResultList(); if(!authorEntityList.isEmpty()) {
-		 * for(AuthorEntity authorEntity : authorEntityList) {
-		 * session.delete(authorEntity); return 1; } } return null;
-		 */
 		AuthorEntity authorEntity = session.get(AuthorEntity.class, authorId);
-		session.delete(authorEntity);
+		session.delete(authorEntity);	
+		//in case of deletion failure above statement will throw exception
+		//If the exception is not thrown, then it means the operation is successful.
 		return 1;
 	}
 
