@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.home.utility.Qualification;
 
 
 
@@ -29,7 +33,8 @@ public class AuthorEntity {
 	@Column(name="emailid")
 	private String emailId ;
 	@Column(name="qualification")
-	private String qualification ;
+	@Enumerated(EnumType.STRING)
+	private Qualification qualification ;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="AUTHOR_BOOK",
@@ -55,17 +60,17 @@ public class AuthorEntity {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public String getQualification() {
-		return qualification;
-	}
-	public void setQualification(String qualification) {
-		this.qualification = qualification;
-	}
 	public List<BookEntity> getBookList() {
 		return bookList;
 	}
 	public void setBookList(List<BookEntity> bookList) {
 		this.bookList = bookList;
+	}
+	public Qualification getQualification() {
+		return qualification;
+	}
+	public void setQualification(Qualification qualification) {
+		this.qualification = qualification;
 	}
 	
 	

@@ -17,6 +17,7 @@ import java.util.List;
 import com.home.dao.AuthorDAO;
 import com.home.model.Author;
 import com.home.model.Book;
+import com.home.utility.Qualification;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AuthorServiceTest {
@@ -35,7 +36,7 @@ public class AuthorServiceTest {
 		Author author = new Author();
 		author.setAuthorName("James Gosling");
 		author.setEmailId("james@gmail.com");
-		author.setQualification("MBA");
+		author.setQualification(Qualification.MBA);
 		
 		List<Book> bookList = new ArrayList<Book>();
 		
@@ -64,7 +65,7 @@ public class AuthorServiceTest {
 		Author author = new Author();
 		author.setAuthorName("James Gosling");
 		author.setEmailId("james@gmail.");
-		author.setQualification("MBA");
+		author.setQualification(Qualification.MBA);
 		
 		List<Book> bookList = new ArrayList<Book>();
 		
@@ -97,7 +98,7 @@ public class AuthorServiceTest {
 		Author author = new Author();
 		author.setAuthorName("James Gosling");
 		author.setEmailId("james@gmail.com");
-		author.setQualification("MBA");
+		author.setQualification(Qualification.MBA);
 		
 		List<Book> bookList = new ArrayList<Book>();
 		
@@ -155,7 +156,7 @@ public class AuthorServiceTest {
 		author.setAuthorId(1010);
 		author.setAuthorName("James Gosling");
 		author.setEmailId("james@gmail.com");
-		author.setQualification("MBA");
+		author.setQualification(Qualification.MBA);
 		
 		List<Book> bookList = new ArrayList<Book>();
 		
@@ -187,7 +188,7 @@ public class AuthorServiceTest {
 		author.setAuthorId(1010);
 		author.setAuthorName("James Gosling");
 		author.setEmailId("james@gmail.com");
-		author.setQualification("MBA");
+		author.setQualification(Qualification.MBA);
 		
 		List<Book> bookList = new ArrayList<Book>();
 		
@@ -222,7 +223,7 @@ public class AuthorServiceTest {
 		author.setAuthorId(1010);
 		author.setAuthorName("James Gosling");
 		author.setEmailId("james@gmail.com");
-		author.setQualification("MBA");
+		author.setQualification(Qualification.MBA);
 		
 		List<Book> bookList = new ArrayList<Book>();
 		

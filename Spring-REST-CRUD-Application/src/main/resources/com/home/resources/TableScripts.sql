@@ -41,8 +41,8 @@ CREATE TABLE AUTHOR_BOOK
 INSERT INTO USERCREDENTIALS VALUES('root','root');
 
 INSERT INTO AUTHOR VALUES(1001,'Marijn Haverbeke','marjin@gmail.com','MBA');
-INSERT INTO AUTHOR VALUES(1002,'Addy Osmani','addy@gmail.com','B.Tech');
-INSERT INTO AUTHOR VALUES(1003,'Eric Elliott','eric@gmail.com','Ph.D');
+INSERT INTO AUTHOR VALUES(1002,'Addy Osmani','addy@gmail.com','BTech');
+INSERT INTO AUTHOR VALUES(1003,'Eric Elliott','eric@gmail.com','PhD');
 INSERT INTO AUTHOR VALUES(1004,'Kyle Simpson','kyle@gmail.com','BBA');
 
 INSERT INTO BOOK VALUES('B_6001','A Modern Introduction to Programming','English',DATE '2018-11-02','472.50');

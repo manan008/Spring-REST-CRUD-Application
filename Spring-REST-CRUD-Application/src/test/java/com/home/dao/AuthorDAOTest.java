@@ -10,13 +10,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.home.configuration.SpringConfig;
 import com.home.model.Author;
 import com.home.model.Book;
+import com.home.utility.Qualification;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {SpringConfig.class})
@@ -44,7 +44,7 @@ public class AuthorDAOTest {
 		Author author = new Author();
 		author.setAuthorName("James Gosling");
 		author.setEmailId("james@gmail.com");
-		author.setQualification("MBA");
+		author.setQualification(Qualification.MBA);
 		
 		List<Book> bookList = new ArrayList<Book>();
 		
@@ -91,7 +91,7 @@ public class AuthorDAOTest {
 		author.setAuthorId(1004);
 		author.setAuthorName("Kyle Simpson");
 		author.setEmailId("kyletest@gmail.com");
-		author.setQualification("BBA");
+		author.setQualification(Qualification.BBA);
 		
 		List<Book> bookList = new ArrayList<Book>();
 		
