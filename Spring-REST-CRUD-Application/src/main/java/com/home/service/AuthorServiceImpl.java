@@ -2,6 +2,8 @@ package com.home.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.home.dao.AuthorDAO;
 import com.home.model.Author;
@@ -9,6 +11,7 @@ import com.home.model.Book;
 import com.home.validator.AuthorValidator;
 import com.home.validator.BookValidator;
 
+@Transactional(readOnly = true)
 @Service(value = "authorService")
 public class AuthorServiceImpl implements AuthorService {
 
@@ -16,6 +19,7 @@ public class AuthorServiceImpl implements AuthorService {
 	AuthorDAO authorDAO;
 	
 	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public Integer addAuthor(Author author) throws Exception {
 		// TODO Auto-generated method stub
 		AuthorValidator.validate(author.getEmailId());
@@ -30,6 +34,7 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Author getAuthorDetails(String emailId) throws Exception {
 		// TODO Auto-generated method stub
 		
@@ -43,6 +48,7 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 
 	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public Integer updateAuthorDetails(Author author) throws Exception {
 		// TODO Auto-generated method stub
 		for(Book book : author.getBookList()) 
@@ -61,6 +67,7 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 
 	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public Integer deleteAuthor(Integer authorId) {
 		// TODO Auto-generated method stub
 		Integer deleteStatus = authorDAO.deleteAuthor(authorId);
