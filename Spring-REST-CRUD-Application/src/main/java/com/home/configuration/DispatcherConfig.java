@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.home.api com.home.service com.home.dao com.home.utiltiy")
+@ComponentScan(basePackages = "com.home.api com.home.controller")
 public class DispatcherConfig implements WebMvcConfigurer{
 
 }

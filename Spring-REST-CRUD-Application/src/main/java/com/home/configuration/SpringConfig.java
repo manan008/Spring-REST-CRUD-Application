@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 	@PropertySource("classpath:/com/home/resources/database.properties"),
 	@PropertySource("classpath:/com/home/resources/configuration.properties")
 })
-@ComponentScan(basePackages = "com.home.api com.home.service com.home.dao com.home.utiltiy")
+@ComponentScan(basePackages = "com.home.service com.home.dao com.home.utiltiy")
 public class SpringConfig 
 {
 	/*
@@ -47,7 +47,7 @@ public class SpringConfig
 		return dataSource;
 	}
 	
-	@Bean
+	@Bean("sessionFactory")
 	public LocalSessionFactoryBean getSessionFactory(DataSource dataSource)
 	{
 		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
