@@ -2,8 +2,10 @@ package com.home.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.home.utility.Qualification;
 
+@JsonRootName(value = "Author")
 public class Author {
 
 	private Integer authorId ;

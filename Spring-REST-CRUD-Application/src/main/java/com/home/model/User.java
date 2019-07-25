@@ -1,5 +1,8 @@
 package com.home.model;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
+@JsonRootName(value = "User")
 public class User {
 
 	private String username;
