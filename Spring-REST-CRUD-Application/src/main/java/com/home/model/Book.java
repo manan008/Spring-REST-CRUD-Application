@@ -2,9 +2,8 @@ package com.home.model;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonRootName;
 
-@JsonRootName(value = "Book")
+
 public class Book 
 {
 	private String bookId ;
