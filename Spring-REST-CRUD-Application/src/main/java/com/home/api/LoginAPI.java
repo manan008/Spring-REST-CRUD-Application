@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.home.model.Author;
 import com.home.model.User;
+import com.home.service.LoginService;
 import com.home.service.LoginServiceImpl;
 import com.home.utility.ContextFactory;
 
@@ -25,40 +25,28 @@ public class LoginAPI {
 	@Autowired
 	private Environment environment;
 	
-//	@RequestMapping(value = "auth",method = RequestMethod.POST)
-//	public ResponseEntity<String> authenticateUser(@RequestBody User user) throws Exception
-	@RequestMapping(value = "auth",method = RequestMethod.GET)
-	public ResponseEntity<User> authenticateUser() throws Exception
+	private LoginService loginService;
+	
+	@RequestMapping(value = "auth",method = RequestMethod.POST)
+	public ResponseEntity<String> authenticateUser(@RequestBody User user) throws Exception
 	{
 		String status = null;
 		try {
-			
-			
-			/*
-			 * LoginServiceImpl loginServiceImpl =
-			 * ContextFactory.getContext().getBean(LoginServiceImpl.class);
-			 * loginServiceImpl.auth(user); System.out.println(status);
-			 * System.out.println(environment.getProperty(status));
-			 * 
-			 * return new ResponseEntity<String>(status , HttpStatus.OK);
-			 */
-			 
-			
-			  User user = new User(); user.setUsername("root"); user.setPassword("root");
-			  return new ResponseEntity<User>(user , HttpStatus.OK);
-			 
+			  loginService = ContextFactory.getContext().getBean(LoginServiceImpl.class);
+			  status = loginService.auth(user); 
+			  return new ResponseEntity<String>(environment.getProperty(status) , HttpStatus.OK);
 		}
 		catch (Exception e) {
-			// TODO: handle exception
-			/*
-			 * User user = new User(); System.out.println(e.getMessage());
-			 * System.out.println(environment.getProperty(e.getMessage()));
-			 * if(environment.getProperty(e.getMessage())==null) { status = e.getMessage();
-			 * } else { status = environment.getProperty(e.getMessage()); }
-			 */
-			//return new ResponseEntity<String>("Bye" , HttpStatus.BAD_REQUEST);
-			return null;
+			
+			  if(environment.getProperty(e.getMessage())==null) 
+			  { 
+				  status = e.getMessage();
+			  } 
+			  else 
+			  { 
+				  status = environment.getProperty(e.getMessage());
+			  }
+			  return new ResponseEntity<String>(status , HttpStatus.BAD_REQUEST);
 		}
 	}
-	
 }
