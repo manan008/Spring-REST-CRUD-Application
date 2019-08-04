@@ -7,5 +7,5 @@ public interface AuthorService {
 	public Integer addAuthor(Author author) throws Exception;
 	public Author getAuthorDetails(String emailId) throws Exception;
 	public Integer updateAuthorDetails(Author author) throws Exception;
-	public Integer deleteAuthor(Integer authorId);
+	public String deleteAuthor(Integer authorId);
 }

@@ -68,10 +68,12 @@ public class AuthorServiceImpl implements AuthorService {
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
-	public Integer deleteAuthor(Integer authorId) {
+	public String deleteAuthor(Integer authorId) {
 		// TODO Auto-generated method stub
 		Integer deleteStatus = authorDAO.deleteAuthor(authorId);
-		return deleteStatus;
+		if(deleteStatus == 1)
+			return "AuthorService.DELETE_SUCCESS";
+		return null;
 	}
 
 }

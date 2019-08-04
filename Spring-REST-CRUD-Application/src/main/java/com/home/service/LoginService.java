@@ -4,5 +4,5 @@ import com.home.model.User;
 
 public interface LoginService 
 {
-	public String auth(User user); 
+	public String auth(User user) throws Exception; 
 }

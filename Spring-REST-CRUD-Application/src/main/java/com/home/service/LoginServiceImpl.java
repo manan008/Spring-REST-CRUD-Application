@@ -17,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public String auth(User user) {
+	public String auth(User user) throws Exception {
 		// TODO Auto-generated method stub
 		Integer authStatus = loginDao.auth(user);
 		if(authStatus == 1)
@@ -26,11 +26,11 @@ public class LoginServiceImpl implements LoginService {
 		}
 		else if(authStatus == 0)
 		{
-			return "LoginService.INCORRECT_PASSWORD";
+			throw new Exception("LoginService.INCORRECT_PASSWORD");
 		}
 		else
 		{
-			return "LoginService.USER_NOT_FOUND";
+			throw new Exception("LoginService.USER_NOT_FOUND");
 		}
 	}
 

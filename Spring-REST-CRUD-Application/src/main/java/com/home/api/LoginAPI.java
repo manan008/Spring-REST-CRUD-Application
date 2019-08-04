@@ -28,16 +28,18 @@ public class LoginAPI {
 	private LoginService loginService;
 	
 	@RequestMapping(value = "auth",method = RequestMethod.POST)
-	public ResponseEntity<String> authenticateUser(@RequestBody User user) throws Exception
+	public ResponseEntity<User> authenticateUser(@RequestBody User user) throws Exception
 	{
 		String status = null;
 		try {
 			  loginService = ContextFactory.getContext().getBean(LoginServiceImpl.class);
-			  status = loginService.auth(user); 
-			  return new ResponseEntity<String>(environment.getProperty(status) , HttpStatus.OK);
+			  status = loginService.auth(user);
+			  user.setPassword("");
+			  user.setSuccessMessage(environment.getProperty(status));
+			  return new ResponseEntity<User>(user , HttpStatus.OK);
 		}
 		catch (Exception e) {
-			
+			user.setPassword("");
 			  if(environment.getProperty(e.getMessage())==null) 
 			  { 
 				  status = e.getMessage();
@@ -46,7 +48,8 @@ public class LoginAPI {
 			  { 
 				  status = environment.getProperty(e.getMessage());
 			  }
-			  return new ResponseEntity<String>(status , HttpStatus.BAD_REQUEST);
+			  user.setErrorMessage(status);
+			  return new ResponseEntity<User>(user , HttpStatus.BAD_REQUEST);
 		}
 	}
 }

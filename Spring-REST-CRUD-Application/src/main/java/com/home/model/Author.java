@@ -11,6 +11,8 @@ public class Author {
 	private String emailId ;
 	private Qualification qualification ;
 	private List<Book> bookList ;
+	private String successMessage;
+	private String errorMessage;
 	
 	public Integer getAuthorId() {
 		return authorId;
@@ -41,6 +43,18 @@ public class Author {
 	}
 	public void setQualification(Qualification qualification) {
 		this.qualification = qualification;
+	}
+	public String getSuccessMessage() {
+		return successMessage;
+	}
+	public void setSuccessMessage(String successMessage) {
+		this.successMessage = successMessage;
+	}
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 	
 }

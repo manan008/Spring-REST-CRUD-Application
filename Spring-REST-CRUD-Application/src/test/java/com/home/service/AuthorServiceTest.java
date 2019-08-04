@@ -254,6 +254,6 @@ public class AuthorServiceTest {
 	@Test
 	public void deleteAuthorSuccess() throws Exception {
 		when(authorDAO.deleteAuthor(1001)).thenReturn(1);
-		authorService.deleteAuthor(1001);
+		Assert.assertTrue(authorService.deleteAuthor(1001).equals("AuthorService.DELETE_SUCCESS"));
 	}
 }
