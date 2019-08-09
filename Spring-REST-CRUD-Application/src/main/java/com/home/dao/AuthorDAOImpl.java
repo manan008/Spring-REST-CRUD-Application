@@ -45,6 +45,18 @@ public class AuthorDAOImpl implements AuthorDAO {
 			return false;
 		}
 	}
+	
+	@Override
+	public String getAuthorEmailByAuthorId(Integer authorId) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		AuthorEntity authorEntity = session.get(AuthorEntity.class, authorId);
+		if(authorEntity!=null && (!authorEntity.getEmailId().isEmpty() && !authorEntity.getEmailId().equals("")))
+		{
+			return authorEntity.getEmailId();
+		}
+		return null;
+	}
 
 	@Override
 	public Integer addAuthor(Author author) {
@@ -124,10 +136,13 @@ public class AuthorDAOImpl implements AuthorDAO {
 			for(Book book : author.getBookList())
 			{
 				BookEntity bookEntity = session.get(BookEntity.class, book.getBookId());
-				bookEntity.setBookName(book.getBookName());
-				bookEntity.setLanguage(book.getLanguage());
-				bookEntity.setCost(book.getCost());
-				bookEntity.setPublishedDate(book.getPublishedDate());
+				if(bookEntity!=null)
+				{
+					bookEntity.setBookName(book.getBookName());
+					bookEntity.setLanguage(book.getLanguage());
+					bookEntity.setCost(book.getCost());
+					bookEntity.setPublishedDate(book.getPublishedDate());
+				}
 			}
 		}
 		session.persist(authorEntity);

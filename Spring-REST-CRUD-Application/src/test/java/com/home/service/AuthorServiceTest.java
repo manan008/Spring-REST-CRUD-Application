@@ -178,6 +178,7 @@ public class AuthorServiceTest {
 		
 		author.setBookList(bookList);
 
+		when(authorDAO.getAuthorEmailByAuthorId(1010)).thenReturn("james@gmail.com");
 		when(authorDAO.updateAuthorDetails(author)).thenReturn(1010);
 		Assert.assertTrue(authorService.updateAuthorDetails(author)==1010);
 	}
@@ -213,6 +214,7 @@ public class AuthorServiceTest {
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("BookValidator.INVALID_BOOKID");
 		
+		when(authorDAO.getAuthorEmailByAuthorId(1010)).thenReturn("james@gmail.com");
 		when(authorDAO.updateAuthorDetails(author)).thenReturn(1010);
 		Assert.assertTrue(authorService.updateAuthorDetails(author)==1010);
 	}
@@ -247,6 +249,7 @@ public class AuthorServiceTest {
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("AuthorService.EXISITING_EMAIL_ID");
 		
+		when(authorDAO.getAuthorEmailByAuthorId(1010)).thenReturn("james1@gmail.com");
 		when(authorDAO.checkEmailAvailability(author.getEmailId())).thenReturn(true);
 		Assert.assertTrue(authorService.updateAuthorDetails(author)==1010);
 	}

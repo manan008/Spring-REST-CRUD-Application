@@ -4,6 +4,7 @@ import com.home.model.Author;
 
 public interface AuthorDAO {
 	public Boolean checkEmailAvailability(String emailId);
+	public String getAuthorEmailByAuthorId(Integer authorId);
 //	public Boolean checkBookAvailability(String bookId);
 	public Integer addAuthor(Author author);
 	public Author getAuthorDetails(String emailId);

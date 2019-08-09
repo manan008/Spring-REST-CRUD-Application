@@ -25,10 +25,10 @@ public class AuthorServiceImpl implements AuthorService {
 		AuthorValidator.validate(author.getEmailId());
 		Boolean isEmailAlreadyAvailable = authorDAO.checkEmailAvailability(author.getEmailId());
 		if(isEmailAlreadyAvailable)
-		{
-			//email already existing in db
-			throw new Exception("AuthorService.EXISITING_EMAIL_ID");
-		}
+			{
+				//email already existing in db
+				throw new Exception("AuthorService.EXISITING_EMAIL_ID");
+			}
 		Integer authorId = authorDAO.addAuthor(author);
 		return authorId;
 	}
@@ -56,11 +56,15 @@ public class AuthorServiceImpl implements AuthorService {
 			BookValidator.validate(book); 
 		}
 		AuthorValidator.validate(author.getEmailId());
-		Boolean isEmailAlreadyAvailable = authorDAO.checkEmailAvailability(author.getEmailId());
-		if(isEmailAlreadyAvailable)
+		if(!authorDAO.getAuthorEmailByAuthorId(author.getAuthorId()).equals(author.getEmailId()))
 		{
-			//email already existing in db
-			throw new Exception("AuthorService.EXISITING_EMAIL_ID");
+			//email of author is updated/changed
+			Boolean isEmailAlreadyAvailable = authorDAO.checkEmailAvailability(author.getEmailId());
+			if(isEmailAlreadyAvailable)
+			{
+				//email already existing in db
+				throw new Exception("AuthorService.EXISITING_EMAIL_ID");
+			}
 		}
 		Integer authorId = authorDAO.updateAuthorDetails(author);
 		return authorId;
