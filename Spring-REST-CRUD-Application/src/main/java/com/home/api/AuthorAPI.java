@@ -75,7 +75,7 @@ public class AuthorAPI {
 		}
 	}
 	
-	@RequestMapping(value = "updateAuthor",method = RequestMethod.POST)
+	@RequestMapping(value = "updateAuthor",method = RequestMethod.PUT)
 	public ResponseEntity<Author> updateAuthorDetails(@RequestBody Author author) throws Exception
 	{
 		try {
@@ -98,7 +98,7 @@ public class AuthorAPI {
 		}
 	}
 	
-	@RequestMapping(value = "deleteAuthor",method = RequestMethod.POST)
+	@RequestMapping(value = "deleteAuthor",method = RequestMethod.DELETE)
 	public ResponseEntity<Author> deleteAuthor(@RequestBody Author author) throws Exception
 	{
 		try {
