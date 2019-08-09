@@ -52,8 +52,9 @@ public class LoginServiceTest {
 	public void authUserNotExist() throws Exception
 	{
 		User user = new User();
-		user.setUsername("roo");
+		user.setUsername("root1");
 		user.setPassword("root");
+		when(loginDAO.auth(user)).thenReturn(-1);
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("LoginService.USER_NOT_FOUND");
 		loginService.auth(user);
