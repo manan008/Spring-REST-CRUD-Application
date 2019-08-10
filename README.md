@@ -1,5 +1,14 @@
 # Spring-REST-CRUD-Application
 This application is based on Java and Spring framework. This application has 3-layer architecture implemented i.e Presentation, Service and Persistence Layer.<br />
+<p>
+Following are the configurations:
+<ul>
+  <li>Java 8</li>
+  <li>Apache Tomcat 9.0.22</li>
+</ul>
+</p>
+Following maven command needs to be run for adding ORACLE jdbc jar to maven local repository:<br />
+<code>mvn install:install-file -Dfile=C:\Users\Vinamra\git\Spring-REST-CRUD-Application\Spring-REST-CRUD-Application\WebContent\WEB-INF\lib\ojdbc14.jar -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=19.3 -Dpackaging=jar</code><br />
 It has APIs exposed which are listed below:
 
 <p>
