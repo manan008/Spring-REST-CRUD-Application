@@ -7,8 +7,10 @@ Following are the configurations:
   <li>Apache Tomcat 9.0.22</li>
 </ul>
 </p>
+<p>
 Following maven command needs to be run for adding ORACLE jdbc jar to maven local repository:<br />
-<code>mvn install:install-file -Dfile=path\to\project\Spring-REST-CRUD-Application\Spring-REST-CRUD-Application\WebContent\WEB-INF\lib\ojdbc14.jar -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=19.3 -Dpackaging=jar</code><br />
+<code>mvn install:install-file -Dfile=path\to\project\Spring-REST-CRUD-Application\Spring-REST-CRUD-Application\WebContent\WEB-INF\lib\ojdbc14.jar -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=19.3 -Dpackaging=jar</code>
+</p>
 It has APIs exposed which are listed below:
 
 <p>
