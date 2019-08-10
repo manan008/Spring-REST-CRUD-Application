@@ -2,7 +2,7 @@
 <!DOCTYPE xml>
 <Configuration>
 	<Appenders>
-		<File name="LogFile" filename="ApplicationLog.log" append="true">
+		<File name="LogFile" filename="D:/ApplicationLogs/SpringRESTCRUD/ApplicationLog.log" append="true">
 			<PatternLayout pattern="%d{dd-mm-yyyy HH:mm:ss} %level %logger{36} - %msg%n" />
 		</File>
 	</Appenders>
