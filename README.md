@@ -54,5 +54,63 @@ It has APIs exposed which are listed below:
         </code>
       </p>
     </li>
+    <li> 
+      <p>
+        <strong>PUT: </strong>http://localhost/Spring-REST-CRUD-Application/AuthorAPI/updateAuthor<br />
+        <h4>Request Body:</h4>
+        <code>
+          {
+    "authorId": 1005,
+    "authorName": "Marijn Haverbeke",
+    "emailId": "marjin1@gmail.com",
+    "qualification": "MBA",
+    "bookList": [
+        {
+            "bookId": "B_6031",
+            "bookName": "A Modern Introduction to Programming",
+            "language": "English",
+            "publishedDate": [
+                2018,
+                11,
+                2
+            ],
+            "cost": 800.0
+        }
+    ],
+    "successMessage": null,
+    "errorMessage": null
+}
+        </code>
+      </p>
+    </li>
+    <li> 
+      <p>
+        <strong>DELETE: </strong>http://localhost/Spring-REST-CRUD-Application/AuthorAPI/deleteAuthor<br />
+        <h4>Request Body:</h4>
+        <code>
+          {
+    "authorId": 1005,
+    "authorName": "Marijn Haverbeke",
+    "emailId": "marjin@gmail.com",
+    "qualification": "MBA",
+    "bookList": [
+        {
+            "bookId": "B_6030",
+            "bookName": "A Modern Introduction to Programming",
+            "language": "English",
+            "publishedDate": [
+                2018,
+                11,
+                2
+            ],
+            "cost": 472.5
+        }
+    ],
+    "successMessage": null,
+    "errorMessage": null
+}
+        </code>
+      </p>
+    </li>
    </ul>
 </p>
