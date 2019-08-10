@@ -21,4 +21,38 @@ It has APIs exposed which are listed below:
 </p>
 <p>
 <u>Author API</u>
+  <ul>
+    <li> 
+      <p>
+        <strong>GET: </strong>http://localhost/Spring-REST-CRUD-Application/AuthorAPI/getAuthor?email=marjin1@gmail.com<br />
+      </p>
+    </li>
+    <li> 
+      <p>
+        <strong>POST: </strong>http://localhost/Spring-REST-CRUD-Application/AuthorAPI/addAuthor<br />
+        <h4>Request Body:</h4>
+        <code>
+          {
+    "authorName": "Marijn Haverbeke",
+    "emailId": "marjin@gmail.com",
+    "qualification": "MBA",
+    "bookList": [
+        {
+            "bookName": "A Modern Introduction to Programming",
+            "language": "English",
+            "publishedDate": [
+                2018,
+                11,
+                2
+            ],
+            "cost": 472.5
+        }
+    ],
+    "successMessage": null,
+    "errorMessage": null
+    }
+        </code>
+      </p>
+    </li>
+   </ul>
 </p>
