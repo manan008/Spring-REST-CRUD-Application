@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import com.home.entity.AuthorEntity;
 import com.home.entity.BookEntity;
 import com.home.model.Author;
 import com.home.model.Book;
+import com.home.utility.LogConfig;
 
 @Repository(value="authorDAO")
 public class AuthorDAOImpl implements AuthorDAO {
@@ -24,9 +26,11 @@ public class AuthorDAOImpl implements AuthorDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 	
+	final static Logger LOGGER = LogConfig.getLogger(AuthorDAOImpl.class);
+	
 	@Override
 	public Boolean checkEmailAvailability(String emailId) {
-		// TODO Auto-generated method stub
+		LOGGER.info("Check if "+emailId+" already exist in db or not");
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 		CriteriaQuery<AuthorEntity> criteriaQuery = criteriaBuilder.createQuery(AuthorEntity.class);
@@ -38,21 +42,24 @@ public class AuthorDAOImpl implements AuthorDAO {
 		if(!authorEntityList.isEmpty())
 		{
 			//email already exist
+			LOGGER.info("Email - "+emailId+" already exist");
 			return true;
 		}
 		else {
 			//email does not exist
+			LOGGER.info("Email - "+emailId+" does not exist");
 			return false;
 		}
 	}
 	
 	@Override
 	public String getAuthorEmailByAuthorId(Integer authorId) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		AuthorEntity authorEntity = session.get(AuthorEntity.class, authorId);
+		LOGGER.info("Author Entity for Author ID - "+authorId+" : "+authorEntity);
 		if(authorEntity!=null && (!authorEntity.getEmailId().isEmpty() && !authorEntity.getEmailId().equals("")))
 		{
+			LOGGER.info("Email ID for Author ID - "+authorId+" : "+authorEntity.getEmailId());
 			return authorEntity.getEmailId();
 		}
 		return null;
@@ -60,7 +67,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 
 	@Override
 	public Integer addAuthor(Author author) {
-		// TODO Auto-generated method stub
+		LOGGER.info("Adding author details");
 		Session session = sessionFactory.getCurrentSession();
 		AuthorEntity authorEntity = new AuthorEntity();
 		authorEntity.setAuthorName(author.getAuthorName());
@@ -80,12 +87,13 @@ public class AuthorDAOImpl implements AuthorDAO {
 		Integer authorId = (Integer)session.save(authorEntity);
 		//in case of addition failure above statement will throw exception
 		//If the exception is not thrown, then it means the operation is successful.
+		LOGGER.info("Adding author success");
 		return authorId;
 	}
 
 	@Override
 	public Author getAuthorDetails(String emailId) {
-		// TODO Auto-generated method stub
+		LOGGER.info("Getting author details");
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 		CriteriaQuery<AuthorEntity> criteriaQuery = criteriaBuilder.createQuery(AuthorEntity.class);
@@ -125,7 +133,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 
 	@Override
 	public Integer updateAuthorDetails(Author author) {
-		// TODO Auto-generated method stub
+		LOGGER.info("Updating author details for "+author.getEmailId());
 		Session session = sessionFactory.getCurrentSession();
 		AuthorEntity authorEntity = session.get(AuthorEntity.class, author.getAuthorId());
 		if(authorEntity!=null)
@@ -149,17 +157,19 @@ public class AuthorDAOImpl implements AuthorDAO {
 		//in case of updating failure above statement will throw exception
 		//If the exception is not thrown, then it means the operation is successful.
 		Integer authorId = authorEntity.getAuthorId();
+		LOGGER.info("Update Success for "+authorId);
 		return authorId;
 	}
 
 	@Override
 	public Integer deleteAuthor(Integer authorId) {
-		// TODO Auto-generated method stub
+		LOGGER.info("Deleting author details for "+authorId);
 		Session session = sessionFactory.getCurrentSession();
 		AuthorEntity authorEntity = session.get(AuthorEntity.class, authorId);
 		session.delete(authorEntity);	
 		//in case of deletion failure above statement will throw exception
 		//If the exception is not thrown, then it means the operation is successful.
+		LOGGER.info("Delete Success for - "+authorId);
 		return 1;
 	}
 
